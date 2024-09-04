@@ -1,0 +1,19 @@
+cep = str(workflow['cep'])
+# cep1 = cep
+# return cep1
+
+import re
+
+# cep = str(72930000)
+
+
+if re.match(r'^\d{5}-\d{3}$', cep):
+    cep1 = cep  # Formato: 88888-888
+elif re.match(r'^\d{8}$', cep):
+    cep1 = f"{cep[:5]}-{cep[5:]}"  # Formato: 88888999 -> 88888-999
+elif re.match(r'^\d{2}\.\d{3}-\d{3}$', cep):
+    cep1 = f"{cep[:2]}{cep[3:6]}-{cep[7:]}"  # Formato: 88.888-888 -> 88888-888
+else:
+    cep1 = None  
+
+return cep1
